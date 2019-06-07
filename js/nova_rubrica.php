@@ -28,7 +28,7 @@
 	$multi=implode(",",$array["multi"]);
 	$jocs=implode(",",$array["jocs"]);
 ?>
-
+//Comentario prueba
 <script type="text/javascript">
 var diseny =[];
 var multi=[];
