@@ -1,0 +1,9 @@
+#headerOUT, #imgEva {
+	margin: auto;
+	padding: 7px;
+	width: 65%;
+	max-width: 100%;
+}
+#imgEva {
+	display: block;
+}

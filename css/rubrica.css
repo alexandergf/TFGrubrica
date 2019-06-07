@@ -1,0 +1,19 @@
+#pdf{
+	height: 40%;
+	width: 100%;
+	margin-bottom: 20px;
+}
+#iframe,#frases{
+	height: 60%;
+	width: 49%;
+	display: inline;
+}
+#frases{
+	float: right;
+}
+#bodyOUT,#headerOUT{
+	margin: auto;
+	padding: 7px;
+	width: 65%;
+	max-width: 100%;
+}

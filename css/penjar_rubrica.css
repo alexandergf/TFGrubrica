@@ -1,0 +1,10 @@
+#userfile > input
+{
+    display: none;
+}
+
+#userfile img
+{
+    width: 50px;
+    cursor: pointer;
+}
