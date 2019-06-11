@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../js/veure_rubrica.php');
 ?>
 <html>
 <head>
@@ -12,7 +13,8 @@ session_start();
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 
     $(function(){
-      $("#headerOUT").load("header.php"); 
+	  $("#headerOUT").load("header.php"); 
+	  document.getElementById("submit").disabled = true;
     });
     </script> 
 </head>
@@ -22,31 +24,22 @@ session_start();
 		<img src="../resources/images/cordinador.jpg" id="imgEva">
 	</div>
 	<div class="formulario">
-	    <form class="formulario_ini" method="post" action="../php/rubrica_vista.php">
-			<select id="select_grau" name="select_grau">
-	          <option value="Selecciona el Grau">Selecciona el Grau</option>
-	          <option value="Grau en Diseño Animació i Art Digital">Grau en Diseño Animació i Art Digital</option>
-	          <option value="Grau en Multimèdia">Grau en Multimèdia</option>
-	          <option value="Grau en Disseny i Desenvolupament de Videojocs">Grau en Disseny i Desenvolupament de Videojocs</option>
+	<div class="formulario">
+		<form method="POST" action="rubrica.php" id="formulario">
+			<select id="select_grau" name="select_grau" onchange="selectGrau()">
+	          <option selected value="Selecciona el Grau">Selecciona el Grau</option>
+	          <option value="diseny">Grau en Diseño Animació i Art Digital</option>
+	          <option value="multi">Grau en Multimèdia</option>
+	          <option value="jocs">Grau en Disseny i Desenvolupament de Videojocs</option>
 	        </select>
-	        <select id="select_est" name="select_est">
-	          <option value="Seleccion estudiant">Seleccion estudiant</option>
-	          <option value="Estudiant 1">Estudiant 1</option>
-	          <option value="Estudiant 2">Estudiant 2</option>
-	          <option value="Rosa María Puig i Tresserres">Rosa María Puig i Tresserres</option>
-	          <option value="Estudiant 3">Estudiant 3</option>
-	          <option value="Jacinto González López">Jacinto González López</option>
-	          <option value="Estudiant 5">Estudiant 5</option>
-	          <option value="Estudiant 6">Estudiant 6</option>
+	        <select id="select_estudiant" name="select_estudiant" onchange="selectEst()">
 	        </select>
-	        <select id="select_rub" name="select_rub">
-	          <option value="Selecciona la rúbrica">Selecciona la rúbrica</option>
-	          <option value="Primera rúbrica">Primera rúbrica</option>
-	          <option value="Segona rúbrica">Segona rúbrica</option>
-	          <option value="Tribunal">Tribunal</option>
-	        </select>
-			<input type="submit" name="submit">
+	        <select id="select_rubrica" name="select_rubrica">
+	        </select>  
+	        <input type="hidden" name="perfil" ><!--value="profesor">-->
+	        <input type="submit" id="submit" name="submit">
 		</form>
+	</div>
 	</div>
 </body>
 </html> 

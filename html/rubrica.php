@@ -24,7 +24,6 @@
 		}else{
 			$fila=$result->fetchObject();
 			$pdf=$fila->documento;
-			echo $pdf;
 		}
 	$dbTabla='ALUMNO'; 
 	$dbTabla2='Tiene';

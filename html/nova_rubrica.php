@@ -1,6 +1,11 @@
 <?php
 session_start();
-require_once('../js/nova_rubrica.php');
+$pag=$_GET["id"];
+if($pag==1){
+	require_once('../js/nova_rubrica.php');
+} else {
+	require_once('../js/continuar_rubrica.php');
+}
 ?>
 <html>
 <head>
@@ -13,17 +18,24 @@ require_once('../js/nova_rubrica.php');
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 
     $(function(){
-      $("#headerOUT").load("header.php"); 
-    });
+	  $("#headerOUT").load("header.php"); 
+	  document.getElementById("submit").disabled = true;
+	});
     </script> 
 </head>
 <body>
 	<div id="headerOUT"></div>
 	<div class="intro_img">
-		<img src="../resources/images/nueva_rubrica.jpg" id="imgEva">
+	<?php
+		if($pag == 1){
+			echo "<img src='../resources/images/nueva_rubrica.jpg' id='imgEva'>";
+		} else {
+			echo "<img src='../resources/images/continuar_rubrica.jpg' id='imgEva'>";
+		}
+	?>
 	</div>
 	<div class="formulario">
-		<form method="POST" action="rubrica.php">
+		<form method="POST" action="rubrica.php" id="formulario">
 			<select id="select_grau" name="select_grau" onchange="selectGrau()">
 	          <option selected value="Selecciona el Grau">Selecciona el Grau</option>
 	          <option value="diseny">Grau en Diseño Animació i Art Digital</option>
@@ -35,7 +47,7 @@ require_once('../js/nova_rubrica.php');
 	        <select id="select_rubrica" name="select_rubrica">
 	        </select>  
 	        <input type="hidden" name="perfil" value="profesor">
-	        <input type="submit" name="submit">
+	        <input type="submit" id="submit" name="submit">
 		</form>
 	</div>
 </body>

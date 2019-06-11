@@ -9,7 +9,7 @@
 	$result = $db->prepare($consulta);
 	$result->execute();
 	foreach ($result as $fila) {
-		$nrub=estudiant($fila[nombre]);
+        $nrub=estudiant($fila[nombre]);
 		switch ($fila[grado]) {
 		    case "Grau en Diseño Animació i Art Digital":
 				array_push($array["diseny"],$fila[nombre] . " " . $fila[apellido]);
@@ -35,24 +35,24 @@
 		$contador=0;
 		$dbTabla='Tiene';
 		$dbTabla2='ALUMNO';
-		$dbTabla3='Pert3';
+		$dbTabla3='Pert1';
 		$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
 		$result = $db->prepare($consulta);
 		$result->execute(array(":iu" => $nombre));
 		$total = $result->fetchColumn();
-		if($total == 0){
+		if($total>0 && $total<19){
 			$dbTabla3='Pert2';
 			$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
 			$result = $db->prepare($consulta);
 			$result->execute(array(":iu" => $nombre));
 			$total = $result->fetchColumn();
-			if($total == 0){
-				$dbTabla3='Pert1';
+			if($total>0 && $total<11){
+				$dbTabla3='Pert3';
 				$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
 				$result = $db->prepare($consulta);
 				$result->execute(array(":iu" => $nombre));
 				$total = $result->fetchColumn();
-				if($total == 0){
+				if($total>0 && $total<9){
 					$contador=3;
 				}else{
 					$contador=2;
@@ -139,20 +139,21 @@ function selectEst(){
 				$('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
 				break;
 			case "2":
+				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
 				$('#select_rubrica').append('<option value="2">Rúbrica 2</option>');
-				$('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
 				break;
 			case "1":
-				$('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
+				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
 				break;
 			default:
-				$('#select_rubrica').append('<option value="error">Error</option>');
+				$('#select_rubrica').append('<option value="no">No hay rúbricas empezadas.</option>');
 				break;
-		}
-		if(valor != 0){
+        }
+        if(valor != 0){
             document.getElementById("submit").disabled = false;
         }
 	}
-	fillRub();
+    fillRub();
 };
+
 </script>

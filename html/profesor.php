@@ -29,7 +29,7 @@ session_start();
 	          <option value="continuar">Continuar una rúbrica ja començada</option>
 	          <option value="veure">Veure missatges del coordinador</option>
 	        </select>
-	        <button onclick="redirec()">Siguiente</button>  
+	        <button onclick="redirec()">Siguiente</button> 
 	</div>
 </body>
 </html> 
