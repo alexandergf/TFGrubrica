@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../js/penjar_rubrica.php');
 ?>
 <html>
 <head>
@@ -10,11 +11,11 @@ session_start();
 	<link rel="stylesheet" href="../css/home.css">
 	<link rel="stylesheet" href="../css/penjar_rubrica.css">
 	<script type="text/javascript" src="../js/header.js"></script>
-	<script type="text/javascript" src="../js/penjar_rubrica.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 
     $(function(){
-      $("#headerOUT").load("header.php"); 
+	  $("#headerOUT").load("header.php"); 
+	  inici();
     });
     </script> 
 </head>
@@ -25,12 +26,7 @@ session_start();
 	</div>
 	<div class="formulario">
 		<form action="../php/insertRubrica.php" method="POST" enctype="multipart/form-data">
-			<select id="select_rub" name="select_rub">
-	          <option value="Quina rúbrica dessitja veure?">Quina rúbrica dessitja penjar?</option>
-	          <option value="1">Rúbrica 1</option>
-	          <option value="2">Rúbrica 2</option>
-	          <option value="3">Rúbrica 3</option>
-	        </select>
+			<select id="select_rubrica" name="select_rubrica"></select>
 	        
 	        <label for="userfile" id="userfile" >
 	        	<input type="file" id='file_input' name="file_input" />
