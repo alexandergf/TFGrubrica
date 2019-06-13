@@ -5,6 +5,6 @@ function redirec(){
 	} else if (value == "continuar") {
 		location.href='../html/nova_rubrica.php?id=2';
 	} else if (value == "veure"){
-		//location.href='../html/penjar_rubrica.php';
+		location.href='../html/ver_mensajes.php';
 	}
 }

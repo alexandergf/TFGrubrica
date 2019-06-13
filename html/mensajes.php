@@ -3,7 +3,7 @@
     require_once("../php/conexion_pdo.php");
 	$db = new Conexion();
 	$dbTabla='PROFESOR';
-	$consulta="SELECT nombre,apellido FROM PROFESOR WHERE idUsuario != :iu";
+	$consulta="SELECT * FROM $dbTabla WHERE idUsuario != :iu";
 	$result = $db->prepare($consulta);
 	$result->execute(array(":iu" => $_SESSION["id"]));
 ?>
@@ -28,29 +28,30 @@
 		<img src="../resources/images/mensajes.jpg" id="imgEva" />
     </div>
     <div id="mensajes-body">
-        <form id="mensajes-form" method="POST" action="">
+        <form id="mensajes-form" method="POST" action="../php/mensajes.php">
             <div id="destinatario">
                 <p>Per a:</p>
                 <select id="select_profesor" name="select_profesor">
                     <option value="Selecciona al profesor" selected="selected">Selecciona al profesor</option>
                     <?php
                         foreach ($result as $fila){
-                            echo "<option value='".$fila[nombre]." ".$fila[apellido]."'>".$fila[nombre]." ".$fila[apellido]."</option>";
+                            echo "<option value='".$fila[idUsuario]."'>".$fila[nombre]." ".$fila[apellido]."</option>";
                         }
                     ?>
                 </select>
             </div>
             <div id="asunto">
-                <p>Assumpte</p>
+                <p>Assumpte:</p>
                 <input type="text" id="asumpto-mensaje" name="asumpto-mensaje">
             </div>
-            </form>
+            
             <div id="texto-mensaje">
                 <p>Enviar:</p>
-                <input type="textarea" id="texto-mensaje" name="texto-mensaje">
             </div>
-            <textarea rows="4" cols="50" name="comment" form="mensajes-form">
+            <textarea rows="4" cols="50" name="comment">
             Enter text here...</textarea>
+            <input type="submit" name="submit" id="submit">
+            </form>
         <table id="mensajes-table">
     
         </table>

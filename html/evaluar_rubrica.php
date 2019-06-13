@@ -58,11 +58,13 @@
 		echo "Error";
 	} else {
 		echo "<form method='POST' name='form' id='form' >";
+		$is=0;
 		foreach ($result as $fila) {
 			echo "<p>".$fila["nombre"]."</p>";
+			echo "<script>mostrar($is,$rub,$apartado);</script>";
+			echo "<div id='guia$is'></div>";
 			echo "<p>Teniendo en cuenta los criterios anteriores, califica la pregunta:</p>";
 			//action='guardar_apartado.php?rub=".$rub."&apartado=".$apartado."
-
 			for ($i = 0; $i <= 10; $i++) {
 				if ($i == $fila["notaSubapartado"]) {
 					print "<input type='radio' name='".$fila["idSub"]."' value='$i' checked disabled> $i";
@@ -71,7 +73,7 @@
 				}
 			    
 			}
-			
+$is++;
 			
 		}
 		echo "<div class='buttons'>";
@@ -81,7 +83,7 @@
 		}
 		$alante="../php/cambiar_apartado.php?rub=$rub&apartado=$apartado&accion=alante";
 		if ($apartado<$total) {
-			echo "<input type='button' onclick=\"pag('$alante')\" value='Alante'>";
+			echo "<input type='button' onclick=\"pag('$alante')\" value='Siguiente'>";
 		}
 		echo "</div>";
 		echo "</form>";
