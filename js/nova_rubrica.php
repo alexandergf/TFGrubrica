@@ -149,7 +149,7 @@ function selectEst(){
 				$('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
 				break;
 			default:
-				$('#select_rubrica').append('<option value="error">Error</option>');
+				$('#select_rubrica').append('<option value="error">No hay rúbricas</option>');
 				break;
 		}
 		if(valor != 0){

@@ -7,13 +7,17 @@
 	<title>Rubrica <?php echo $rub;?></title>
 	<meta charset="utf-8">
 	<script type="text/javascript" src="../js/evaluar.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<link rel="stylesheet" href="../css/evaluar_rubrica.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 <?php
 	$rub = $_GET["rub"];
 	$apartado=$_GET["apartado"];
+	$perfil=$_GET["perfil"];
+	if($perfil != "profesor"){
+		$perfil="estudiante";
+	}
 	require_once("../php/conexion_pdo.php");
 	$db = new Conexion();
 
@@ -33,19 +37,19 @@
 	$fila=$result->fetchObject();
 	switch ($rub) {
 		case 1:
-			echo "<h2>Primera rúbrica TFG (versión estudiante)</h2>";
+			echo "<h2>Primera rúbrica TFG (versión $perfil)</h2>";
 			break;
 		case 2:
-			echo "<h2>Segona rúbrica TFG (versión estudiante)</h2>";
+			echo "<h2>Segona rúbrica TFG (versión $perfil)</h2>";
 			break;
 		case 3:
-			echo "<h2>Tercera rúbrica TFG (versión estudiante)</h2>";
+			echo "<h2>Tercera rúbrica TFG (versión $perfil)</h2>";
 			break;
 		default:
-			echo "<h2>Rúbrica TFG (versión estudiante)</h2>";
+			echo "<h2>Rúbrica TFG (versión $perfil)</h2>";
 			break;
 	}
-	echo "<div class='subtitle'><h3>".$fila->titulo." (".$fila->porcentage."%)</h3></div>";
+	echo "<div class='subtitle'><h2>".$fila->titulo." (".$fila->porcentage."%)</h2></div>";
 	$dbTabla='Posee'.$rub;	
 	$dbTabla2='SUBAPARTADOS'.$rub; 
 	$dbTabla3='Pert'.$rub;
@@ -60,30 +64,35 @@
 		echo "<form method='POST' name='form' id='form' >";
 		$is=0;
 		foreach ($result as $fila) {
-			echo "<p>".$fila["nombre"]."</p>";
+			echo "<h3>".$fila["nombre"]."</h3>";
 			echo "<script>mostrar($is,$rub,$apartado);</script>";
 			echo "<div id='guia$is'></div>";
-			echo "<p>Teniendo en cuenta los criterios anteriores, califica la pregunta:</p>";
+			echo "<h3>Teniendo en cuenta los criterios anteriores, califica la pregunta:</h3>";
 			//action='guardar_apartado.php?rub=".$rub."&apartado=".$apartado."
+			echo "<div class='answer' id='answer'>";
 			for ($i = 0; $i <= 10; $i++) {
-				if ($i == $fila["notaSubapartado"]) {
-					print "<input type='radio' name='".$fila["idSub"]."' value='$i' checked disabled> $i";
+				if($perfil != "profesor"){
+					if ($i == $fila["notaSubapartado"]) {
+						print "<div id='colum' class='colum'><input type='radio' class='res' id='res' name='".$fila["idSub"]."' value='$i' checked disabled><p class='res-num' id='res-num'>$i</p></div>";
+					}else{
+						print "<div id='colum' class='colum'><input type='radio' class='res' id='res' name='$fila[0]' value='$i' disabled><p class='res-num' id='res-num'>$i</p></div>";
+					}
 				}else{
-					print "<input type='radio' name='$fila[0]' value='$i' disabled> $i";
+					print "<div id='colum' class='colum'><input type='radio' class='res' id='res' name='$fila[0]' value='$i'><p class='res-num' id='res-num'>$i</p></div>";
 				}
-			    
 			}
-$is++;
+			echo "</div>";
+		$is++;
 			
 		}
-		echo "<div class='buttons'>";
+		echo "<div class='buttons' id='buttons'>";
 		$atras="../php/cambiar_apartado.php?rub=$rub&apartado=$apartado&accion=atras";
 		if ($apartado>1) {
-			echo "<input type='button' onclick=\"pag('$atras')\" value='Atras'>";
+			echo "<input type='button' class='btn-at' id='btn-at' onclick=\"pag('$atras')\" value='Atras'>";
 		}
 		$alante="../php/cambiar_apartado.php?rub=$rub&apartado=$apartado&accion=alante";
 		if ($apartado<$total) {
-			echo "<input type='button' onclick=\"pag('$alante')\" value='Siguiente'>";
+			echo "<input type='button' class='btn-si' id='btn-si' onclick=\"pag('$alante')\" value='Siguiente'>";
 		}
 		echo "</div>";
 		echo "</form>";

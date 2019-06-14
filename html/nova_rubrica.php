@@ -20,7 +20,7 @@ if($pag==1){
     <script> 
     $(function(){
 	  $("#headerOUT").load("header.php"); 
-	  document.getElementById("submit").disabled = true;
+	  //document.getElementById("submit").disabled = true;
 	});
     </script> 
 </head>

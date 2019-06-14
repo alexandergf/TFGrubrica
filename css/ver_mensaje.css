@@ -14,6 +14,8 @@
     text-align: left;
     color: #0080ff;
     margin-bottom: 10px; 
+    font-weight: normal; 
+    font-size: 14;
 }
 #mensajes-table td{
     border: 1px solid black;
@@ -28,10 +30,32 @@
     width: 15%;
 }
 #mensajes-table td button{
+    font-size: 14;
     border: 0;
     color: #0080ff;
     text-transform: uppercase;
     background-color: #FFFFFF;
     text-align: center;
     cursor: pointer;
+}
+#btn-inici{
+    min-width: 102px;
+	height: 34px;
+	background-color: #5FB9FD;
+	color: white;
+	padding: 0px 15px;
+	margin: 10px auto;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 14px;
+    text-align: center;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+}
+#btn-ini{
+    margin: 10px auto;
+    width: 100%;
+    float: left;
+    display: flex;
 }

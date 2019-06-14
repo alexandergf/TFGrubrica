@@ -40,19 +40,19 @@
 		$result = $db->prepare($consulta);
 		$result->execute(array(":iu" => $nombre));
 		$total = $result->fetchColumn();
-		if($total>0 && $total<19){
+		if($total==19){
 			$dbTabla3='Pert2';
 			$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
 			$result = $db->prepare($consulta);
 			$result->execute(array(":iu" => $nombre));
 			$total = $result->fetchColumn();
-			if($total>0 && $total<11){
+			if($total==11){
 				$dbTabla3='Pert3';
 				$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
 				$result = $db->prepare($consulta);
 				$result->execute(array(":iu" => $nombre));
 				$total = $result->fetchColumn();
-				if($total>0 && $total<9){
+				if($total==9){
 					$contador=3;
 				}else{
 					$contador=2;
@@ -146,11 +146,11 @@ function selectEst(){
 				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
 				break;
 			default:
-				$('#select_rubrica').append('<option value="no">No hay rúbricas empezadas.</option>');
+				$('#select_rubrica').append('<option value="no">No hay rúbricas corregidas.</option>');
 				break;
         }
-        if(valor != 0){
-            document.getElementById("submit").disabled = false;
+        if(valor > 0 && valor<4){
+			document.getElementById("submit-btn").disabled = false;
         }
 	}
     fillRub();

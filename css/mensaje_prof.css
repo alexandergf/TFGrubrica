@@ -26,7 +26,7 @@
 	background-color: #5FB9FD;
 	color: white;
 	padding: 0px 15px;
-	margin: 8px 0;
+	margin: 10px auto;
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
@@ -34,4 +34,17 @@
 	font-size: 14px;
     text-align: center;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+}
+#btn-return{
+    margin: 0 auto;
+    width: 60%;
+    float: left;
+    display: flex;
+}
+textarea[disabled]{
+    border: 1px solid black;
+    color: #000000;
+    background-color: #FFFFFF;
+    width: 60%;
+    height: 25%;
 }

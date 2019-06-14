@@ -8,7 +8,7 @@
 	$dbTabla='Tiene'; 
 	$dbTabla2='RUBRICA'.$rub;
 	$dbTabla3='ALUMNO';
-	if ($perfil == "profesor") {
+	if (($perfil == "profesor") || ($perfil == "coordinador")) {
 		$consulta="SELECT documento FROM $dbTabla2 INNER JOIN $dbTabla ON $dbTabla2.idTFG=$dbTabla.idTFG INNER JOIN $dbTabla3 ON $dbTabla.idAlum=$dbTabla3.idUsuario AND $dbTabla3.nombre=:iu";
 		$n=explode(" ", $_POST["select_estudiant"]);	
 		$alumno=$n[0];
@@ -28,7 +28,7 @@
 	$dbTabla='ALUMNO'; 
 	$dbTabla2='Tiene';
 	$dbTabla3='TFG';
-	if ($perfil == "profesor") {
+	if (($perfil == "profesor") || ($perfil == "coordinador")) {
 		$consulta="SELECT nombre,apellido,$dbTabla3.titulo FROM $dbTabla INNER JOIN $dbTabla2 ON $dbTabla2.idAlum=$dbTabla.idUsuario AND $dbTabla.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG=$dbTabla2.idTFG";
 	}else{
 		$consulta="SELECT nombre,apellido,$dbTabla3.titulo FROM $dbTabla INNER JOIN $dbTabla2 ON $dbTabla2.idAlum=$dbTabla.idUsuario AND $dbTabla.idUsuario=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG=$dbTabla2.idTFG";
@@ -68,9 +68,9 @@
 		<span class="intro" id="intro">Trabajo de Fin de Grado: <?php echo $titulo." de ".$nom." " . $cognom ; ?></span>
 		<p>Documento: Memoria del TFG (solo lectura)</p>
 		<?php 
-			//echo "<iframe id='pdf' src='../rubricas_pdf/" . $pdf . "'></iframe>"; 
-			echo "<iframe id='pdf' src='pdf.php'></iframe>"; 
-		 	echo "<iframe id='iframe' src='evaluar_rubrica.php?rub=".$rub."&apartado=1'></iframe>"; 
+			echo "<iframe id='pdf' src='../rubricas_pdf/" . $pdf . "'></iframe>"; 
+			//echo "<iframe id='pdf' src='pdf.php'></iframe>"; 
+		 	echo "<iframe id='iframe' src='evaluar_rubrica.php?rub=".$rub."&apartado=1&perfil=$perfil'></iframe>"; 
 		 	if ($perfil == "profesor") {
 		 		echo "<iframe id='frases' src='../resources/pdf/frases.pdf'></iframe>";
 		 	}

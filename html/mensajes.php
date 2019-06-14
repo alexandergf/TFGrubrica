@@ -13,7 +13,8 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/header.css">
-	<link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/mensajes.css">
 	<script type="text/javascript" src="../js/header.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 
@@ -42,19 +43,17 @@
             </div>
             <div id="asunto">
                 <p>Assumpte:</p>
-                <input type="text" id="asumpto-mensaje" name="asumpto-mensaje">
+                <input type="text" id="asumpto-mensaje" name="asumpto-mensaje" maxlength="100">
             </div>
             
             <div id="texto-mensaje">
                 <p>Enviar:</p>
+                <textarea name="comment">Escrigui el missatge aqui...</textarea>
             </div>
-            <textarea rows="4" cols="50" name="comment">
-            Enter text here...</textarea>
-            <input type="submit" name="submit" id="submit">
-            </form>
-        <table id="mensajes-table">
-    
-        </table>
+            <div id="env">
+                <input type="submit" name="submit" id="submit" value="Enviar missatge">
+            </div>
+        </form>
     </div>
 </body>
 </html> 

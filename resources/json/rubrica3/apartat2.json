@@ -1,9 +1,9 @@
 {
 	"puntuacions": [
-		{"text":"No assolit", "punts":"(0-4)"},
-		{"text":"No assolit amb el nivell suficient", "punts":"(5-6)"},
-		{"text":"Assolit correctament", "punts":"(7-8)"},
-		{"text":"Assolit amb excel·lència", "punts":"(9-10)"}
+		{"text":"No assolit", "punts":"0-4"},
+		{"text":"No assolit amb el nivell suficient", "punts":"5-6"},
+		{"text":"Assolit correctament", "punts":"7-8"},
+		{"text":"Assolit amb excel·lència", "punts":"9-10"}
 	],
 	"valoracions": [
 		[

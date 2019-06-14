@@ -45,7 +45,7 @@
             <?php echo "<p id='word'>".$fila->fecha."</p>";?>
         </div>
         <div id="messaje-line">
-            <?php echo $fila->contenido;?>
+            <?php echo "<textarea id='messaje-cont' disabled>".$fila->contenido."</textarea>";?>
         </div>
         <div id="btn-return">
             <button type="button" id="btn-rtn" onclick="redirec()">Tornar a Missatges</button>

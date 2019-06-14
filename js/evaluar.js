@@ -6,10 +6,8 @@ function mostrar(num,rub,apartat){
 	$("#guia").empty();
 	  $.getJSON("../resources/json/rubrica"+rub+"/apartat"+apartat+".json",
 			function(data){
-			console.log(data);
 				for(var i = 0; i < data.valoracions[num].length; i++){
-					console.log(data.valoracions[0][i]["text"] + "Hola");
-					$("#guia"+num).append("<p>"+data.valoracions[num][i]["text"]+"</p>");	
+					$("#guia"+num).append("<div id='row' class='row'><p id='number' class='number'>"+data.puntuacions[i]["punts"]+"</p><p id='text' class='text'>"+data.valoracions[num][i]["text"]+"</p></div>");	
 			  	}
 		})
 }

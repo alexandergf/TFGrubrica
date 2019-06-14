@@ -50,12 +50,14 @@
                 <th>Assumpte</th>
                 <th>Data</th>
             </tr>
-            <tr>
                 <?php
                     if($aux == "no"){
+                        echo "<tr>";
                         echo "<td>No hay mensajes.</td>";
+                        echo "</tr>";
                     }else{
                         foreach ($result as $fila){
+                            echo "<tr>";
                             foreach ($result2 as $fila2){
                                 if($fila[coordinador] == $fila2[idUsuario]){
                                     echo "<td>$fila2[nombre] $fila2[apellido]</td>";
@@ -68,12 +70,14 @@
 	                        $fecha=$fecha[0];
                             echo "<td id='date'>$fecha</td>";
                             echo "<td id='btn-id'><button id='btn-mensaje' onclick='redirec($fila[idMensaje])'>VEURE</button></td>";
-                            
+                            echo "</tr>";
                         }
                     }
                 ?>
-            </tr>
         </table>
+        <div id="btn-ini">
+            <button type="button" id="btn-inici" onclick="retorn()">Tornar a l'inici</button>
+        </div>
     </div>
 </body>
 </html> 
