@@ -33,6 +33,7 @@
 		require_once("../php/conexion_pdo.php");
 		$db = new Conexion();
 		$contador=0;
+		$aux='';
 		$dbTabla='Tiene';
 		$dbTabla2='ALUMNO';
 		$dbTabla3='Pert3';
@@ -42,12 +43,14 @@
 		$total = $result->fetchColumn();
 		if($total == 0){
 			$dbTabla3='Pert2';
+			$dbTabla4='RUBRICA2';
 			$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
 			$result = $db->prepare($consulta);
 			$result->execute(array(":iu" => $nombre));
 			$total = $result->fetchColumn();
 			if($total == 0){
 				$dbTabla3='Pert1';
+				$dbTabla4='RUBRICA1';
 				$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
 				$result = $db->prepare($consulta);
 				$result->execute(array(":iu" => $nombre));
@@ -61,7 +64,7 @@
 				$contador = 1;
 			}
 		}
-		return $contador;
+		return $contador.$aux;
 	}
 
 ?>

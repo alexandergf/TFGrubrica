@@ -33,6 +33,9 @@ if($total == 0){
 }
 ?>
 <script type="text/javascript">
+function redirec(){
+    location.href='../html/estudiante.php';
+}
 function inici(){
     var valor = <?php echo $contador; ?>;
     $('#select_rubrica').empty();

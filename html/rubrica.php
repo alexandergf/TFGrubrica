@@ -68,7 +68,8 @@
 		<span class="intro" id="intro">Trabajo de Fin de Grado: <?php echo $titulo." de ".$nom." " . $cognom ; ?></span>
 		<p>Documento: Memoria del TFG (solo lectura)</p>
 		<?php 
-			echo "<iframe id='pdf' src='../rubricas_pdf/" . $pdf . "'></iframe>"; 
+			//echo "<iframe id='pdf' src='../rubricas_pdf/" . $pdf . "'></iframe>"; 
+			echo "<iframe id='pdf' src='pdf.php'></iframe>"; 
 		 	echo "<iframe id='iframe' src='evaluar_rubrica.php?rub=".$rub."&apartado=1'></iframe>"; 
 		 	if ($perfil == "profesor") {
 		 		echo "<iframe id='frases' src='../resources/pdf/frases.pdf'></iframe>";

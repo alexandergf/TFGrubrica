@@ -16,8 +16,9 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/header.css">
-	<link rel="stylesheet" href="../css/home.css">
-	<script type="text/javascript" src="../js/ver_mensajes.js"></script>
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/mensaje_prof.css">
+	<script type="text/javascript" src="../js/mensajes_prof.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 
     $(function(){
@@ -33,18 +34,21 @@
     <div id="mensajes-body">
         <div id="first-line">
             <p>De:</p>
-            <?php echo $fila->nombre . " " . $fila->apellido;?>
+            <?php echo "<p id='word'>".$fila->nombre . " " . $fila->apellido."</p>";?>
         </div>
         <div id="second-line">
             <p>Assumpte:</p>
-            <?php echo $fila->asumpto;?>
+            <?php echo "<p id='word'>".$fila->asumpto."</p>";?>
         </div>
         <div id="third-line">
             <p>Data:</p>
-            <?php echo $fila->fecha;?>
+            <?php echo "<p id='word'>".$fila->fecha."</p>";?>
         </div>
         <div id="messaje-line">
             <?php echo $fila->contenido;?>
+        </div>
+        <div id="btn-return">
+            <button type="button" id="btn-rtn" onclick="redirec()">Tornar a Missatges</button>
         </div>
     </div>
 </body>

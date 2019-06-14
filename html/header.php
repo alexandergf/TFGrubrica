@@ -6,7 +6,7 @@ session_start();
 	<div class='ini_ses'>
 	<?php
 		if ($_SESSION["id"]>0) {
-			echo "<div class='log_ses' onclick='logout()'>SORTIR<img src='../resources/logos/logOut_logo.png' class='logOut_logo'></div>";
+			echo "<div class='log_ses' onclick='logout()'><span class='text-out'>SORTIR</span><img src='../resources/logos/logOut_logo.png' class='logOut_logo'></div>";
 		}else{
 			echo "<div class='log_ini' onclick='openCloseSign()'><span class='fa-stack'><i class='fa fa-user fa-stack-1x ini'></i></span>Campus<span class='fa-stack'><i class='fa fa-caret-down fa-stack-1x ini'></i></span></div>";
 		}
@@ -76,7 +76,7 @@ session_start();
 		<form class="formulario_ini" method="post" action="../php/revacceso.php">
 			<input id="username" type="text" name="username" placeholder="Usuari" autocapitalize="off" autocorrect="off">
 			<input id="password" type="password" name="password" placeholder="Contrasenya" autocapitalize="off" autocorrect="off">
-			<input type="submit" name="submit">
+			<input type="submit" name="submit" value="Entrar" id="submit">
 		</form>
 	</div>
 </div>

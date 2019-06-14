@@ -1,0 +1,37 @@
+#mensajes-body{
+    margin: auto;
+	padding: 7px;
+	width: 60%;
+	max-width: 100%;
+}
+#mensajes-table{
+    border-spacing: 20px 5px;
+    table-layout:fixed;
+}
+#mensajes-table th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: #0080ff;
+    margin-bottom: 10px; 
+}
+#mensajes-table td{
+    border: 1px solid black;
+}
+#mensajes-table #btn-id{
+    border: 0;
+}
+#mensajes-table #assu{
+    width: 70%;
+}
+#mensajes-table #date{
+    width: 15%;
+}
+#mensajes-table td button{
+    border: 0;
+    color: #0080ff;
+    text-transform: uppercase;
+    background-color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+}
