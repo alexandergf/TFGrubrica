@@ -3,7 +3,13 @@
 }
 .subtitle h2{
 	color: #fff;
-	padding: 10px;
+	padding: 15px;
+	margin-left: 10px;
+	font-size: 20;
+}
+#title{
+	margin-top: 20px;
+	margin-left: 20px;
 }
 .row, #row {
 	display: flex;
@@ -11,6 +17,10 @@
 	flex-direction: row;
 	width: 100%;
 	margin: -25px auto;
+}
+#form h3{
+	width: 95%;
+	margin-left: 20px;
 }
 #row p{
 	border: 1px solid rgba(0, 0, 0, .5);;
@@ -32,7 +42,11 @@
 	padding: 5px;
 }
 body {
-	width: 100%;
+	width: 96%;
+	border:0px solid rgba(0, 0, 0, .5);
+	border-radius: 6px;
+	border-top: 8px solid rgb(103, 58, 183);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
 }
 #answer, .answer {
 	display: flex;
@@ -63,12 +77,12 @@ body {
 	font-weight: bold;
 	font-size: 14px;
     text-align: center;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+	text-transform: uppercase;
 }
 #buttons, .buttons{
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	float: left;
 	margin: 15px;
 }

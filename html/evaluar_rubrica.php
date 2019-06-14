@@ -37,16 +37,16 @@
 	$fila=$result->fetchObject();
 	switch ($rub) {
 		case 1:
-			echo "<h2>Primera rúbrica TFG (versión $perfil)</h2>";
+			echo "<h2 id='title'>Primera rúbrica TFG (versión $perfil)</h2>";
 			break;
 		case 2:
-			echo "<h2>Segona rúbrica TFG (versión $perfil)</h2>";
+			echo "<h2 id='title'>Segona rúbrica TFG (versión $perfil)</h2>";
 			break;
 		case 3:
-			echo "<h2>Tercera rúbrica TFG (versión $perfil)</h2>";
+			echo "<h2 id='title'>Tercera rúbrica TFG (versión $perfil)</h2>";
 			break;
 		default:
-			echo "<h2>Rúbrica TFG (versión $perfil)</h2>";
+			echo "<h2 id='title'>Rúbrica TFG (versión $perfil)</h2>";
 			break;
 	}
 	echo "<div class='subtitle'><h2>".$fila->titulo." (".$fila->porcentage."%)</h2></div>";
@@ -93,6 +93,10 @@
 		$alante="../php/cambiar_apartado.php?rub=$rub&apartado=$apartado&accion=alante";
 		if ($apartado<$total) {
 			echo "<input type='button' class='btn-si' id='btn-si' onclick=\"pag('$alante')\" value='Siguiente'>";
+		}
+		$enviar="";
+		if ($apartado==$total) {
+			echo "<input type='button' class='btn-si' id='btn-si' onclick=\"pag('$enviar')\" value='Enviar'>";
 		}
 		echo "</div>";
 		echo "</form>";

@@ -8,6 +8,9 @@
 	width: 49%;
 	display: inline;
 }
+#iframe{
+	border: 0;
+}
 #frases{
 	float: right;
 }
@@ -16,4 +19,23 @@
 	padding: 7px;
 	width: 65%;
 	max-width: 100%;
+}
+#btn{
+	min-width: 102px;
+	height: 34px;
+	background-color: rgb(23, 140, 230);
+	color: white;
+	padding: 0px 15px;
+	margin: auto;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 14px;
+    text-align: center;
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+}
+.return{
+	margin: 20px auto;
+	display: flex;
 }
