@@ -15,8 +15,8 @@
 		$result->execute(array(":log" => $mail, ":pas" => md5($pas)));
 
 		if (!$result) { 
-			print "<p>Error en la consulta. 1</p>\n";
-					//header("location:login.php");
+			//print "<p>Error en la consulta. 1</p>\n";
+			header("location:../html/home.php?error=1");
 		}else{
 			session_start();
 			$fila=$result->fetchObject();
@@ -25,8 +25,8 @@
 			header("location:../html/perfil.php");
 		}
 	}else{
-		//header("location:index.php?error=1");
-		print "<p>Error en la consulta.</p>\n";
+		header("location:../html/home.php?error=1");
+		//print "<p>Error en la busqueda.</p>\n";
 	}
 
 ?>

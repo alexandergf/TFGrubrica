@@ -39,7 +39,7 @@ function redirec(){
 function inici(){
     var valor = <?php echo $contador; ?>;
     $('#select_rubrica').empty();
-    $('#select_rubrica').append('<option value="Quina rúbrica dessitja veure?" selected="selected">Quina rúbrica dessitja penjar?</option>');
+    $('#select_rubrica').append('<option value="pregunta" selected="selected">Quina rúbrica dessitja penjar?</option>');
     switch(valor){
         case 3:
             $('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
@@ -51,17 +51,22 @@ function inici(){
             $('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
             break;
         case 1:
-            $('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
+            $('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
             break;
         default:
-            $('#select_rubrica').append('<option value="error">No hay rúbricas que ver.</option>');
+            $('#select_rubrica').append('<option value="error">No hi ha rúbricas que pujar.</option>');
             break;
-    }
-    if(valor != 0){
-        document.getElementById("submit").disabled = false;
     }
 };
 function image(){
             $('#file_input').trigger('click');
         };
+function look(){
+    var select=$('#select_rubrica').val();
+    if((select != "pregunta") && (select != "error")){
+        $("#submit-btn").removeAttr("disabled");
+    }else{
+        $("#submit-btn").prop("disabled", "disabled");
+    }
+};
 </script>

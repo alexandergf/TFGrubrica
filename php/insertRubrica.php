@@ -1,6 +1,6 @@
 <?PHP
-	include "protege.php";
-	$rub = $_POST["select_rub"];
+	include "../php/protege.php";
+	$rub = $_POST["select_rubrica"];
 	require_once("conexion_pdo.php");
 	$db = new Conexion();
 	$nombre=explode("@", $_SESSION["nombre"]);
@@ -10,49 +10,61 @@
 	$_FILES["file_input"]["name"]=$rub . $_SESSION["id"] . $_SESSION["nombre"] . "." . $extension;
 
 	if ($_FILES['file_input']['type'] != 'application/pdf') {
-		print "<p>Error 1</p>\n";
+		header("location:../html/penjar_rubrica.php?error=1");
+		//print "<p>Error tipo fichero</p>\n";
 	} else {
 		if ($_FILES["file_input"]["error"] > 0) {
-			print "<p>Error 2</p>\n";
+			header("location:../html/penjar_rubrica.php?error=2");
+			//print "<p>Error file input</p>\n";
 		} else {
 			if (move_uploaded_file($_FILES["file_input"]["tmp_name"],"../rubricas_pdf/" . $_FILES["file_input"]["name"])) {
 				$dbTabla='Tiene'; 
-				$consulta = "SELECT idTFG FROM $dbTabla WHERE idAlum=:iu"; 
+				$consulta = "SELECT Tiene.idTFG FROM Tiene WHERE Tiene.idAlum=:iu"; 
 				$result = $db->prepare($consulta);
 				$result->execute(array(":iu" => $_SESSION["id"]));
 				if (!$result) {
 					//Fallo
-					print "<p>Error en la consulta. 1</p>\n";
+					//header("location:../html/penjar_rubrica.php?error=4");
+					print $_SESSION["id"]."   ".$consulta;
+					//print "<p>No existe en la base de datos el TFG.</p>\n";
 				}else{
-					$fila=$result->fetchObject();
-					$dbTabla='RUBRICA'.$rub; 
-					$consulta="SELECT COUNT(idTFG) FROM $dbTabla WHERE idTFG=:it";
-					$result2 = $db->prepare($consulta);
-					$result2->execute(array(":it" => $fila->idTFG));
-					if (!$result2) {
+					$tfg=$result->fetchColumn();
+
+					if ($tfg == NULL) {
 						//Fallo
-						print "<p>Error en la consulta. 2</p>\n";
+						//header("location:../html/penjar_rubrica.php?error=5");
+						print $_SESSION["id"]."   ".$consulta."   ".$fila->idTFG;
+						//print "<p>No existe en la base de datos el TFG.</p>\n";
 					} else {
-						$total=$result2->fetchColumn();
+						$dbTabla2='RUBRICA'.$rub; 
+						$consulta = "SELECT COUNT($dbTabla2.idTFG) FROM $dbTabla2 WHERE $dbTabla2.idTFG=:iu"; 
+						//SELECT COUNT(Tiene.idTFG) as contador,RUBRICA1.idTFG FROM `Tiene` INNER JOIN RUBRICA1 ON Tiene.idTFG=RUBRICA1.idTFG AND Tiene.idAlum=1
+						$result = $db->prepare($consulta);
+						$result->execute(array(":iu" => $tfg));
+						$total=$result->fetchColumn();
 						if ($total == 0) {
-							$consulta="INSERT INTO $dbTabla VALUES (:it,:nom,:nota)";
+							$consulta="INSERT INTO $dbTabla2 VALUES (:it,:nom,:nota)";
 							$result3= $db->prepare($consulta);
-							if ($result3->execute(array(":it" =>$fila->idTFG, ":nom" => $_FILES["file_input"]["name"], ":nota" => "null"))) {
+							if ($result3->execute(array(":it" =>$tfg, ":nom" => $_FILES["file_input"]["name"], ":nota" => "null"))) {
 								//Insertado
 								header("location:../html/estudiante.php");
 							} else {
 								//Fallo insert
-								print "<p>Error en la consulta. 3</p>\n";
+								header("location:../html/penjar_rubrica.php?error=6");
+								//print "<p>Error en el insert.$tfg</p>\n";
+								//echo $_FILES["file_input"]["name"];
+								//echo $consulta;
 							}
 						} else {
 							$consulta="UPDATE $dbTabla SET documento=:nom WHERE idTFG=:it";
 							$result3= $db->prepare($consulta);
-							if ($result3->execute(array(":it" =>$fila->idTFG, ":nom" => $_FILES["file_input"]["name"]))) {
+							if ($result3->execute(array(":it" =>$tfg, ":nom" => $_FILES["file_input"]["name"]))) {
 								//Actualizado
 								header("location:../html/estudiante.php");
 							} else {
 								//Fallo actualizacion
-								print "<p>Error en la consulta. 4</p>\n";
+								header("location:../html/penjar_rubrica.php?error=7");
+								//print "<p>Error en el update.</p>\n";
 							}
 						}
 					}
@@ -60,7 +72,8 @@
 				
 			} else {
 				//Fallo al mover el fichero
-				print "<p>Fallo al mover el fichero</p>\n";
+				header("location:../html/penjar_rubrica.php?error=3");
+				//print "<p>Fallo al mover el fichero</p>\n";
 			}
 		}
 	}

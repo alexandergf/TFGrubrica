@@ -1,5 +1,6 @@
 <?php
 include "../php/protege.php";
+$resp=$_GET["perfil"];
 ?>
 <html>
 <head>
@@ -32,6 +33,11 @@ include "../php/protege.php";
 	        </select>
 	        <input type="submit" name="submit" value="Seguir">
 		</form>
+		<?php
+		if(!empty($resp)){
+			echo "<div id='respuesta'><p>No tiene permisos para entrar en $resp.</p></div>";
+		}	
+		?>
 	</div>
 </body>
 </html> 

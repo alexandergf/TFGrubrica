@@ -1,5 +1,6 @@
 <?php 
 session_start();
+$error = $_GET["error"];
 ?>
 <div class="headerIN">
 	<img src="../resources/logos/citm_logo.png" class="citm_logo">
@@ -72,11 +73,20 @@ session_start();
 			</li>
 		</ul>
 	</div>
-	<div id="form-ini" class="formulario" style="display: none;">
-		<form class="formulario_ini" method="post" action="../php/revacceso.php">
+	<?php
+	if($error == 1){
+		echo "<div id='form-ini' class='formulario' style='display: block;'>";
+		echo "<form class='formulario_ini' method='post' action='../php/revacceso.php'>";
+		echo "<div id='error'><p>Usuario o contraseña incorrectos.</p></div>";
+	}else{
+		echo "<div id='form-ini' class='formulario' style='display: none;'>";
+		echo "<form class='formulario_ini' method='post' action='../php/revacceso.php'>";
+	}
+	?>
 			<input id="username" type="text" name="username" placeholder="Usuari" autocapitalize="off" autocorrect="off">
 			<input id="password" type="password" name="password" placeholder="Contrasenya" autocapitalize="off" autocorrect="off">
 			<input type="submit" name="submit" value="Entrar" id="submit">
 		</form>
 	</div>
+	
 </div>

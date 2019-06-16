@@ -1,3 +1,11 @@
+<?php
+	$error=$_GET["error"];
+	if($error == 1){
+		$header="header.php?error=1";
+	}else{
+		$header="header.php";
+	}
+?>
 <html>
 <head>
 	<title>Home</title>
@@ -9,7 +17,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 
     $(function(){
-      $("#headerOUT").load("header.php"); 
+      $("#headerOUT").load("<? echo $header; ?>"); 
     });
     </script> 
 </head>

@@ -23,9 +23,14 @@
 			if ($coor == 1 && $selectValue == "Coordinador") {
 				//Eres coordinador
 				header("location:../html/coordinador.php");
-			} else {
+			} else if($coor == 0 && $selectValue == "Professor"){
 				//Eres profesor
 				header("location:../html/profesor.php");
+			} else if($coor == 1 && $selectValue == "Professor"){
+				//Eres coordinador pero entras como profesor
+				header("location:../html/profesor.php");
+			} else {
+				header("location:../html/perfil.php?perfil=$selectValue");
 			}
 		}
 	}else{
@@ -33,6 +38,8 @@
 		if ($selectValue == "Estudiant") {
 			//Eres estudiante
 			header("location:../html/estudiante.php");
+		}else{
+			header("location:../html/perfil.php?perfil=$selectValue");
 		}
 	}
 ?>
