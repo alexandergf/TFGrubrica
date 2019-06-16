@@ -5,9 +5,9 @@
 	$dbTabla='ALUMNO'; 
 	$dbTabla2='Tiene';
 	$dbTabla3='TFG';
-	$consulta="SELECT nombre,apellido,$dbTabla3.grado FROM $dbTabla INNER JOIN $dbTabla2 ON $dbTabla2.idAlum=$dbTabla.idUsuario INNER JOIN $dbTabla3 ON $dbTabla3.idTFG=$dbTabla2.idTFG";
+	$consulta="SELECT nombre,apellido,$dbTabla3.grado FROM $dbTabla INNER JOIN $dbTabla2 ON $dbTabla2.idAlum=$dbTabla.idUsuario INNER JOIN $dbTabla3 ON $dbTabla3.idTFG=$dbTabla2.idTFG AND $dbTabla2.idProf=:ip";
 	$result = $db->prepare($consulta);
-	$result->execute();
+	$result->execute(array(":ip" => $_SESSION["id"]));
 	foreach ($result as $fila) {
 		$nrub=estudiant($fila[nombre]);
 		switch ($fila[grado]) {
@@ -33,38 +33,41 @@
 		require_once("../php/conexion_pdo.php");
 		$db = new Conexion();
 		$contador=0;
-		$aux='';
 		$dbTabla='Tiene';
 		$dbTabla2='ALUMNO';
-		$dbTabla3='Pert3';
-		$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
+		$dbTabla3='Pert1';
+		$dbTabla4='RUBRICA1';
+		$consulta = "SELECT COUNT($dbTabla.idTFG) as contador,$dbTabla4.documento FROM $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario INNER JOIN $dbTabla4 ON $dbTabla4.idTFG=$dbTabla3.idTFG"; 
+		//SELECT COUNT(Tiene.idTFG),RUBRICA2.documento FROM Tiene INNER JOIN ALUMNO ON Tiene.idAlum=ALUMNO.idUsuario AND ALUMNO.nombre='Alexander' INNER JOIN Pert1 ON Pert1.idTFG = ALUMNO.idUsuario INNER JOIN RUBRICA2 ON RUBRICA2.idTFG=Pert1.idTFG
 		$result = $db->prepare($consulta);
 		$result->execute(array(":iu" => $nombre));
-		$total = $result->fetchColumn();
-		if($total == 0){
+		$total = $result->fetchObject();
+		if(($total->contador == 0) && ($total->documento != null)){
+			$contador = 1;
+		}else{
 			$dbTabla3='Pert2';
 			$dbTabla4='RUBRICA2';
-			$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
+			$consulta = "SELECT COUNT($dbTabla.idTFG) as contador,$dbTabla4.documento FROM $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario INNER JOIN $dbTabla4 ON $dbTabla4.idTFG=$dbTabla3.idTFG";  
 			$result = $db->prepare($consulta);
 			$result->execute(array(":iu" => $nombre));
-			$total = $result->fetchColumn();
-			if($total == 0){
-				$dbTabla3='Pert1';
-				$dbTabla4='RUBRICA1';
-				$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
+			$total = $result->fetchObject();
+			if(($total->contador == 0) && ($total->documento != null)){
+				$contador=2;
+			}else{
+				$dbTabla3='Pert3';
+				$dbTabla4='RUBRICA3';
+				$consulta = "SELECT COUNT($dbTabla.idTFG) as contador,$dbTabla4.documento FROM $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario INNER JOIN $dbTabla4 ON $dbTabla4.idTFG=$dbTabla3.idTFG"; 
 				$result = $db->prepare($consulta);
 				$result->execute(array(":iu" => $nombre));
-				$total = $result->fetchColumn();
-				if($total == 0){
+				$total = $result->fetchObject();
+				if(($total->contador == 0) && ($total->documento != null)){
 					$contador=3;
 				}else{
-					$contador=2;
+					$contador=0;
 				}
-			}else{
-				$contador = 1;
 			}
 		}
-		return $contador.$aux;
+		return $contador;
 	}
 
 ?>
@@ -83,25 +86,40 @@ function selectGrau(){
 		$('#select_estudiant').empty();
 		switch(selected) {
 		  case "diseny":
-		    diseny.forEach(function(element,index){
-				if(index%2==0){
-					$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
-				}
-			});
+			  if(diseny.length == 0){
+				$('#select_estudiant').append('<option value="no">No hi ha alumnes registrats.</option>');
+			  }else{
+				diseny.forEach(function(element,index){
+					if(index%2==0){
+						$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
+					}
+				});
+			  }
 		    break;
 		  case "multi":
-		    multi.forEach(function(element,index){
-				if(index%2==0){
-					$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
-				}
-			});
+				if(multi.length == 0){
+					$('#select_estudiant').append('<option value="no">No hi ha alumnes registrats.</option>');
+				}else{
+					multi.forEach(function(element,index){
+						if(index%2==0){
+							$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
+						}
+					});
+			  	}
 		    break;
 		  case "jocs":
-		    jocs.forEach(function(element,index){
-				if(index%2==0){
-					$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
-				}
-			});
+		  	  if(jocs.length == 0){
+				$('#select_estudiant').append('<option value="no">No hi ha alumnes registrats.</option>');
+			  }else{
+				jocs.forEach(function(element,index){
+					if(index%2==0){
+						$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
+					}
+				});
+			  }
+			break;
+			default:
+				$('#select_estudiant').append("<option value='no'>No s'ha seleccionat grau.</option>");
 			break;
 		} 
 	}
@@ -136,24 +154,21 @@ function selectEst(){
 		}
 		$('#select_rubrica').empty();
 		switch(valor){
-			case "3":
+			case "1":
 				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
-				$('#select_rubrica').append('<option value="2">Rúbrica 2</option>');
-				$('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
 				break;
 			case "2":
 				$('#select_rubrica').append('<option value="2">Rúbrica 2</option>');
-				$('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
 				break;
-			case "1":
+			case "3":
 				$('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
 				break;
 			default:
-				$('#select_rubrica').append('<option value="error">No hay rúbricas</option>');
+				$('#select_rubrica').append('<option value="no">No hi ha rúbricas per corregir.</option>');
 				break;
 		}
 		if(valor != 0){
-            document.getElementById("submit").disabled = false;
+			$("#submit-btn").removeAttr("disabled");
         }
 	}
 	fillRub();

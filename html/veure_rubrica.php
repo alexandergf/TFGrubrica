@@ -15,7 +15,6 @@ require_once('../js/veure_rubrica.php');
     <script> 
     $(function(){
 	  $("#headerOUT").load("header.php"); 
-	  document.getElementById("submit-btn").disabled = true;
     });
     </script> 
 </head>
@@ -40,7 +39,7 @@ require_once('../js/veure_rubrica.php');
 				</select>  
 				<input type="hidden" name="perfil" value="coordinador">
 			</div>
-			<input type="submit" id="submit-btn" name="submit" value="Anar a la rúbrica">
+			<input type="submit" id="submit-btn" name="submit" value="Anar a la rúbrica" disabled="disabled">
 			
 		</form>
 	</div>

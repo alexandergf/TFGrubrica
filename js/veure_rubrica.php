@@ -100,6 +100,9 @@ function selectGrau(){
 				}
 			});
 			break;
+			default:
+				$('#select_estudiant').append("<option value='no'>No s'ha seleccionat grau.</option>");
+			break;
 		} 
 	}
 	fillEstudiant();
@@ -149,8 +152,8 @@ function selectEst(){
 				$('#select_rubrica').append('<option value="no">No hay rúbricas corregidas.</option>');
 				break;
         }
-        if(valor > 0 && valor<4){
-			document.getElementById("submit-btn").disabled = false;
+        if(valor != 0){
+            $("#submit-btn").removeAttr("disabled");
         }
 	}
     fillRub();

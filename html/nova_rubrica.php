@@ -20,7 +20,6 @@ if($pag==1){
     <script> 
     $(function(){
 	  $("#headerOUT").load("header.php"); 
-	  //document.getElementById("submit").disabled = true;
 	});
     </script> 
 </head>
@@ -45,12 +44,14 @@ if($pag==1){
 	          <option value="jocs">Grau en Disseny i Desenvolupament de Videojocs</option>
 	        </select>
 	        <select id="select_estudiant" name="select_estudiant" onchange="selectEst()">
+				<option selected value="Selecciona el Grau">Selecciona l'estudiant</option>
 	        </select>
 	        <select id="select_rubrica" name="select_rubrica">
+				<option selected value="Selecciona el Grau">Selecciona la Rubrica</option>
 			</select> 
 			</div> 
 	        <input type="hidden" name="perfil" value="profesor">
-	        <input type="submit" id="submit" name="submit">
+	        <input type="submit" id="submit-btn" name="submit" disabled="disabled">
 		</form>
 	</div>
 </body>

@@ -5,9 +5,9 @@
 	$dbTabla='ALUMNO'; 
 	$dbTabla2='Tiene';
 	$dbTabla3='TFG';
-	$consulta="SELECT nombre,apellido,$dbTabla3.grado FROM $dbTabla INNER JOIN $dbTabla2 ON $dbTabla2.idAlum=$dbTabla.idUsuario INNER JOIN $dbTabla3 ON $dbTabla3.idTFG=$dbTabla2.idTFG";
+	$consulta="SELECT nombre,apellido,$dbTabla3.grado FROM $dbTabla INNER JOIN $dbTabla2 ON $dbTabla2.idAlum=$dbTabla.idUsuario INNER JOIN $dbTabla3 ON $dbTabla3.idTFG=$dbTabla2.idTFG AND $dbTabla2.idProf=:ip";
 	$result = $db->prepare($consulta);
-	$result->execute();
+	$result->execute(array(":ip" => $_SESSION["id"]));
 	foreach ($result as $fila) {
         $nrub=estudiant($fila[nombre]);
 		switch ($fila[grado]) {
@@ -100,6 +100,9 @@ function selectGrau(){
 				}
 			});
 			break;
+			default:
+				$('#select_estudiant').append("<option value='no'>No s'ha seleccionat grau.</option>");
+			break;
 		} 
 	}
 	fillEstudiant();
@@ -150,7 +153,7 @@ function selectEst(){
 				break;
         }
         if(valor != 0){
-            document.getElementById("submit").disabled = false;
+            $("#submit-btn").removeAttr("disabled");
         }
 	}
     fillRub();
