@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "../php/protege.php";
 require_once('../js/ver_rubrica.php');
 ?>
 <html>
@@ -28,6 +28,7 @@ require_once('../js/ver_rubrica.php');
 	<div class="formulario">
 		<form method="POST" action="rubrica.php">
 			<select id="select_rubrica" name="select_rubrica"></select>
+			<input type="hidden" name="perfil" value="estudiant">
 	        <input type="submit" name="submit" id="submit">
 		</form>
 	</div>

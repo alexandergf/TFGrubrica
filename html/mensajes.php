@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include "../php/protege.php";
     require_once("../php/conexion_pdo.php");
 	$db = new Conexion();
 	$dbTabla='PROFESOR';

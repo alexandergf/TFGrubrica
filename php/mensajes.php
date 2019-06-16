@@ -1,5 +1,5 @@
 <?PHP
-    session_start();
+    include "protege.php";
     require_once("conexion_pdo.php");
     $db = new Conexion();
     

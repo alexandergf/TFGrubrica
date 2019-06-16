@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "../php/protege.php";
 ?>
 <html>
 <head>

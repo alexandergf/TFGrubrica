@@ -1,5 +1,5 @@
 <?PHP
-	session_start();
+	include "protege.php";
 	$selectValue = $_POST["select_list"];
 	require_once("conexion_pdo.php");
 	$db = new Conexion();

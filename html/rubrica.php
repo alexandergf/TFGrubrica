@@ -1,5 +1,5 @@
 <?PHP
-	session_start();
+	include "../php/protege.php";
 	$rub = $_POST["select_rubrica"];
 	$perfil=$_POST["perfil"];
 	require_once("../php/conexion_pdo.php");
@@ -70,7 +70,7 @@
 		<?php 
 			echo "<iframe id='pdf' src='../rubricas_pdf/" . $pdf . "'></iframe>"; 
 			//echo "<iframe id='pdf' src='pdf.php'></iframe>"; 
-		 	echo "<iframe id='iframe' src='evaluar_rubrica.php?rub=".$rub."&apartado=1&perfil=$perfil'></iframe>"; 
+		 	echo "<iframe id='iframe' src='evaluar_rubrica.php?rub=".$rub."&apartado=1&perfil=$perfil&nombre=$nom'></iframe>"; 
 		 	if ($perfil == "profesor") {
 		 		echo "<iframe id='frases' src='../resources/pdf/frases.pdf'></iframe>";
 		 	}

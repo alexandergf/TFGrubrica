@@ -1,5 +1,5 @@
 <?PHP
-	session_start();
+	include "protege.php";
 	$rub = $_POST["select_rub"];
 	require_once("conexion_pdo.php");
 	$db = new Conexion();

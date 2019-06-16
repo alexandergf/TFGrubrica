@@ -1,7 +1,3 @@
-<?php
-session_start();
-session_destroy();
-?>
 <html>
 <head>
 	<title>Home</title>
