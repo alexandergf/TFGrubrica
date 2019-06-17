@@ -84,9 +84,11 @@ function selectGrau(){
 	var fillEstudiant = function(){
 		var selected = $('#select_grau').val(); 
 		$('#select_estudiant').empty();
+		$('#select_estudiant').append("<option value='pregunta'>Selecciona l'estudiant</option>");
 		switch(selected) {
 		  case "diseny":
 			  if(diseny.length == 0){
+				$('#select_estudiant').empty();
 				$('#select_estudiant').append('<option value="no">No hi ha alumnes registrats.</option>');
 			  }else{
 				diseny.forEach(function(element,index){
@@ -98,6 +100,7 @@ function selectGrau(){
 		    break;
 		  case "multi":
 				if(multi.length == 0){
+					$('#select_estudiant').empty();
 					$('#select_estudiant').append('<option value="no">No hi ha alumnes registrats.</option>');
 				}else{
 					multi.forEach(function(element,index){
@@ -109,6 +112,7 @@ function selectGrau(){
 		    break;
 		  case "jocs":
 		  	  if(jocs.length == 0){
+				$('#select_estudiant').empty();
 				$('#select_estudiant').append('<option value="no">No hi ha alumnes registrats.</option>');
 			  }else{
 				jocs.forEach(function(element,index){
@@ -153,6 +157,9 @@ function selectEst(){
 			break;
 		}
 		$('#select_rubrica').empty();
+		if(valor!=0){
+			$('#select_rubrica').append('<option value="pregunta">Selecciona la Rúbrica</option>');
+		}
 		switch(valor){
 			case "1":
 				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
@@ -167,10 +174,15 @@ function selectEst(){
 				$('#select_rubrica').append('<option value="no">No hi ha rúbricas per corregir.</option>');
 				break;
 		}
-		if(valor != 0){
-			$("#submit-btn").removeAttr("disabled");
-        }
 	}
 	fillRub();
+};
+function look(){
+    var select=$('#select_rubrica').val();
+    if((select != "pregunta") && (select != "no")){
+        $("#submit-btn").removeAttr("disabled");
+    }else{
+        $("#submit-btn").prop("disabled", "disabled");
+    }
 };
 </script>

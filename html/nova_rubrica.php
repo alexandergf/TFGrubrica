@@ -44,10 +44,10 @@ if($pag==1){
 	          <option value="jocs">Grau en Disseny i Desenvolupament de Videojocs</option>
 	        </select>
 	        <select id="select_estudiant" name="select_estudiant" onchange="selectEst()">
-				<option selected value="Selecciona el Grau">Selecciona l'estudiant</option>
+				<option selected value="Selecciona el estudiant">Selecciona l'estudiant</option>
 	        </select>
-	        <select id="select_rubrica" name="select_rubrica">
-				<option selected value="Selecciona el Grau">Selecciona la Rubrica</option>
+	        <select id="select_rubrica" name="select_rubrica" onchange="look()">
+				<option selected value="Selecciona la rubrica">Selecciona la Rubrica</option>
 			</select> 
 			</div> 
 	        <input type="hidden" name="perfil" value="profesor">

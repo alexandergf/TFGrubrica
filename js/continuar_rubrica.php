@@ -78,6 +78,7 @@ function selectGrau(){
 	var fillEstudiant = function(){
 		var selected = $('#select_grau').val(); 
 		$('#select_estudiant').empty();
+		$('#select_estudiant').append("<option value='pregunta'>Selecciona l'estudiant</option>");
 		switch(selected) {
 		  case "diseny":
 		    diseny.forEach(function(element,index){
@@ -135,6 +136,7 @@ function selectEst(){
 			break;
 		}
 		$('#select_rubrica').empty();
+		$('#select_rubrica').append('<option value="pregunta">Selecciona la Rúbrica</option>');
 		switch(valor){
 			case "3":
 				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
@@ -152,11 +154,15 @@ function selectEst(){
 				$('#select_rubrica').append('<option value="no">No hay rúbricas empezadas.</option>');
 				break;
         }
-        if(valor != 0){
-            $("#submit-btn").removeAttr("disabled");
-        }
 	}
     fillRub();
 };
-
+function look(){
+    var select=$('#select_rubrica').val();
+    if((select != "pregunta") && (select != "no")){
+        $("#submit-btn").removeAttr("disabled");
+    }else{
+        $("#submit-btn").prop("disabled", "disabled");
+    }
+};
 </script>

@@ -15,7 +15,6 @@ require_once('../js/ver_rubrica.php');
     <script> 
     $(function(){
 	  $("#headerOUT").load("header.php"); 
-	  document.getElementById("submit").disabled = true;
 	  inici();
     });
     </script> 
@@ -27,9 +26,9 @@ require_once('../js/ver_rubrica.php');
 	</div>
 	<div class="formulario">
 		<form method="POST" action="rubrica.php">
-			<select id="select_rubrica" name="select_rubrica"></select>
+			<select id="select_rubrica" name="select_rubrica" onchange="look()"></select>
 			<input type="hidden" name="perfil" value="estudiant">
-	        <input type="submit" name="submit" id="submit">
+	        <input type="submit" name="submit" id="submit-btn" disabled="disabled">
 		</form>
 	</div>
 </body>

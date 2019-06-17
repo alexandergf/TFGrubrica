@@ -111,11 +111,12 @@ include "../php/protege.php";
 		if ($apartado<$total) {
 			echo "<input type='button' class='btn-si' id='btn-si' onclick=\"pag('$alante')\" value='Siguiente'>";
 		}
-		$enviar="";
-		if ($apartado==$total) {
+		$enviar="../php/cambiar_apartado.php?rub=$rub&apartado=$apartado&accion=evaluar";
+		if ($apartado==$total && $perfil=="profesor") {
 			echo "<input type='button' class='btn-si' id='btn-si' onclick=\"pag('$enviar')\" value='Enviar'>";
 		}
 		echo "</div>";
+		echo "<input type='hidden' name='perfil' value='$perfil'>";
 		echo "</form>";
 	}
 ?>
