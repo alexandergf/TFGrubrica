@@ -24,7 +24,8 @@ select{
 	border: 1px solid #dedede;
 	font-size: 13px;
 	color: #2D2D37;
-    background-color: #FFFFFF;
+	background-color: #FFFFFF;
+	font-family: inherit;
 }
 input[type=submit]{
 	min-width: 102px;
@@ -41,4 +42,5 @@ input[type=submit]{
     text-align: center;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
+	font-family: inherit;
 }

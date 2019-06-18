@@ -1,5 +1,5 @@
 <?php
-include "../php/protege.php";
+session_start();
 require_once('../js/penjar_rubrica.php');
 $error=$_GET["error"];
 ?>
@@ -42,25 +42,25 @@ $error=$_GET["error"];
 		<?php
 			switch($error){
 				case "1":
-					echo "<div id='error'><p>Error con el tipo de fichero.</p></div>";
+					echo "<div id='respuesta'><p>Error con el tipo de fichero.</p></div>";
 					break;
 				case "2":
-					echo "<div id='error'><p>Error con el fichero.</p></div>";
+					echo "<div id='respuesta'><p>Error con el fichero.</p></div>";
 					break;
 				case "3":
-					echo "<div id='error'><p>Error al subir el fichero.</p></div>";
+					echo "<div id='respuesta'><p>Error al subir el fichero.</p></div>";
 					break;
 				case "4":
-					echo "<div id='error'><p>Error con el TFG.</p></div>";
+					echo "<div id='respuesta'><p>Error con el TFG.</p></div>";
 					break;
 				case "5":
-					echo "<div id='error'><p>Error con el TFG.</p></div>";
+					echo "<div id='respuesta'><p>Error con el TFG.</p></div>";
 					break;
 				case "6":
-					echo "<div id='error'><p>Error con la base de datos.</p></div>";
+					echo "<div id='respuesta'><p>Error con la base de datos.</p></div>";
 					break;
 				case "7":
-					echo "<div id='error'><p>Error con la base de datos.</p></div>";
+					echo "<div id='respuesta'><p>Error con la base de datos.</p></div>";
 					break;
 				default:
 

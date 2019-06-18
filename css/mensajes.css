@@ -14,6 +14,7 @@
 p{
     color: #0A79B8;
     width: 10%;
+    font-family: inherit;
 }
 #destinatario select, #asunto input[type=text]{
         width: 45%; 
@@ -22,6 +23,7 @@ p{
         color: black;
         border-radius: 0;
         font-size: 14;
+        font-family: inherit;
 }
 input[type=submit],#btn-review{
 	min-width: 102px;
@@ -39,11 +41,13 @@ input[type=submit],#btn-review{
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
     float: none;
+    font-family: inherit;
 }
 textarea{
     width: 60%;
     height: 25%;
     align-self: left;
+    font-family: inherit;
 }
 #env{
     margin: 10px auto;

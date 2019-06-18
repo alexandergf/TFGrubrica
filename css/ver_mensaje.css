@@ -16,21 +16,27 @@
     margin-bottom: 10px; 
     font-weight: normal; 
     font-size: 14;
+    font-family: inherit;
 }
 #mensajes-table td{
     border: 1px solid black;
+    font-family: inherit;
 }
 #mensajes-table #no-mesajes{
     border: 0;
+    font-family: inherit;
 }
 #mensajes-table #btn-id{
     border: 0;
+    font-family: inherit;
 }
 #mensajes-table #assu{
-    width: 69.73%;
+    width: 69.33%;
+    font-family: inherit;
 }
 #mensajes-table #date{
     width: 15%;
+    font-family: inherit;
 }
 #mensajes-table td button{
     font-size: 14;
@@ -40,6 +46,7 @@
     background-color: #FFFFFF;
     text-align: center;
     cursor: pointer;
+    font-family: inherit;
 }
 #btn-inici{
     min-width: 102px;
@@ -56,6 +63,7 @@
     text-align: center;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
+    font-family: inherit;
 }
 #btn-ini{
     margin: 10px auto;
@@ -65,5 +73,4 @@
 }
 body {
     font-family: "Helvetica Neue Med";
-    font-weight: 700;
 }

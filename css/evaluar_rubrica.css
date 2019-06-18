@@ -6,10 +6,12 @@
 	padding: 15px;
 	margin-left: 10px;
 	font-size: 20;
+	font-family: inherit;
 }
 #title{
 	margin-top: 20px;
 	margin-left: 20px;
+	font-family: inherit;
 }
 .row, #row {
 	display: flex;
@@ -19,8 +21,11 @@
 	margin: -25px auto;
 }
 #form h3{
-	width: 95%;
+	width: 91%;
 	margin-left: 20px;
+	text-align: justify;
+	text-justify: inter-word;
+	font-family: inherit;
 }
 #row p{
 	border: 1px solid rgba(0, 0, 0, .5);;
@@ -36,10 +41,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-family: inherit;
 }
 #row #text{
 	width: 80%;
 	padding: 5px;
+	text-align: justify;
+	text-justify: inter-word;
+	font-family: inherit;
 }
 body {
 	width: 96%;
@@ -47,6 +56,8 @@ body {
 	border-radius: 6px;
 	border-top: 8px solid rgb(103, 58, 183);
 	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+	font-family: "Helvetica Neue Med";
+	font-size: 15px;
 }
 #answer, .answer {
 	display: flex;
@@ -80,6 +91,7 @@ body {
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
 	text-transform: uppercase;
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
+	font-family: inherit;
 }
 #buttons, .buttons{
 	display: flex;

@@ -8,3 +8,9 @@
     width: 50px;
     cursor: pointer;
 }
+#btn-return,#submit-btn{
+    font-family: inherit;
+}
+select{
+    font-family: inherit;
+}
