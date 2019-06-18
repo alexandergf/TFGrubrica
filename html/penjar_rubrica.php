@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "../php/protege.php";
 require_once('../js/penjar_rubrica.php');
 $error=$_GET["error"];
 ?>
@@ -12,6 +12,7 @@ $error=$_GET["error"];
 	<link rel="stylesheet" href="../css/home.css">
 	<link rel="stylesheet" href="../css/perfil.css">
 	<link rel="stylesheet" href="../css/penjar_rubrica.css">
+	<link rel="stylesheet" href="../resources/fonts/fonts.css">
 	<script type="text/javascript" src="../js/header.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 

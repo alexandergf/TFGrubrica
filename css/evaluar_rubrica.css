@@ -25,7 +25,7 @@
 #row p{
 	border: 1px solid rgba(0, 0, 0, .5);;
 	border-radius: 5px;
-	background-color: rgb(46, 162, 250);
+	background-color: #0A79B8;
 	color:#FFFFFF;
 	margin-right: 5px;
 }
@@ -67,7 +67,7 @@ body {
 #btn-at, .btn-at, #btn-si, .btn-si{
 	min-width: 102px;
 	height: 34px;
-	background-color: rgb(23, 140, 230);
+	background-color: #0A79B8;
 	color: white;
 	padding: 0px 15px;
 	margin: 8px;
@@ -79,6 +79,7 @@ body {
     text-align: center;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
 	text-transform: uppercase;
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
 }
 #buttons, .buttons{
 	display: flex;

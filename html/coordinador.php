@@ -3,12 +3,13 @@ include "../php/protege.php";
 ?>
 <html>
 <head>
-	<title>Estudiante</title>
+	<title>Coordinador</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/header.css">
 	<link rel="stylesheet" href="../css/home.css">
 	<link rel="stylesheet" href="../css/estudiante.css">
+	<link rel="stylesheet" href="../resources/fonts/fonts.css">
 	<script type="text/javascript" src="../js/header.js"></script>
 	<script type="text/javascript" src="../js/coordinador.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -30,6 +31,7 @@ include "../php/protege.php";
 	          <option value="enviar">Enviar missatge a professor</option>
 	        </select>
 	        <button onclick="redirec()">Siguiente</button>  
+			<button onclick="review()">Volver</button>  
 	</div>
 </body>
 </html> 

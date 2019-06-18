@@ -6,3 +6,6 @@ function redirec(){
 		location.href='../html/veure_rubrica.php';
 	}
 }
+function review(){
+	location.href='../html/perfil.php';
+}

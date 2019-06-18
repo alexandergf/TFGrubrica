@@ -39,7 +39,9 @@ function redirec(){
 function inici(){
     var valor = <?php echo $contador; ?>;
     $('#select_rubrica').empty();
-    $('#select_rubrica').append('<option value="pregunta" selected="selected">Quina rúbrica dessitja penjar?</option>');
+    if(valor>0 && valor<4){
+        $('#select_rubrica').append('<option value="pregunta" selected="selected">Quina rúbrica dessitja penjar?</option>');
+    }
     switch(valor){
         case 3:
             $('#select_rubrica').append('<option value="1">Rúbrica 1</option>');

@@ -37,8 +37,8 @@
 		$dbTabla2='ALUMNO';
 		$dbTabla3='Pert1';
 		$dbTabla4='RUBRICA1';
-		$consulta = "SELECT COUNT($dbTabla.idTFG) as contador,$dbTabla4.documento FROM $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario INNER JOIN $dbTabla4 ON $dbTabla4.idTFG=$dbTabla3.idTFG"; 
-		//SELECT COUNT(Tiene.idTFG),RUBRICA2.documento FROM Tiene INNER JOIN ALUMNO ON Tiene.idAlum=ALUMNO.idUsuario AND ALUMNO.nombre='Alexander' INNER JOIN Pert1 ON Pert1.idTFG = ALUMNO.idUsuario INNER JOIN RUBRICA2 ON RUBRICA2.idTFG=Pert1.idTFG
+		$consulta = "SELECT $dbTabla4.documento,COUNT($dbTabla3.idTFG) as contador FROM $dbTabla4 INNER JOIN $dbTabla3 ON  $dbTabla3.idTFG=$dbTabla4.idTFG WHERE $dbTabla4.idTFG=(SELECT idTFG FROM $dbTabla WHERE idAlum=(SELECT idUsuario FROM $dbTabla2 WHERE nombre=:iu))"; 
+		//SELECT RUBRICA2.documento,COUNT(Pert2.idTFG) FROM RUBRICA2 INNER JOIN Pert2 ON Pert2.idTFG=RUBRICA2.idTFG WHERE RUBRICA2.idTFG=(SELECT idTFG FROM Tiene WHERE idAlum=(SELECT idUsuario FROM ALUMNO WHERE nombre='Alexander'))
 		$result = $db->prepare($consulta);
 		$result->execute(array(":iu" => $nombre));
 		$total = $result->fetchObject();
@@ -47,8 +47,7 @@
 		}else{
 			$dbTabla3='Pert2';
 			$dbTabla4='RUBRICA2';
-			$consulta = "SELECT COUNT($dbTabla.idTFG) as contador,$dbTabla4.documento FROM $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario INNER JOIN $dbTabla4 ON $dbTabla4.idTFG=$dbTabla3.idTFG";  
-			$result = $db->prepare($consulta);
+			$consulta = "SELECT $dbTabla4.documento,COUNT($dbTabla3.idTFG) as contador FROM $dbTabla4 INNER JOIN $dbTabla3 ON  $dbTabla3.idTFG=$dbTabla4.idTFG WHERE $dbTabla4.idTFG=(SELECT idTFG FROM $dbTabla WHERE idAlum=(SELECT idUsuario FROM $dbTabla2 WHERE nombre=:iu))"; 			$result = $db->prepare($consulta);
 			$result->execute(array(":iu" => $nombre));
 			$total = $result->fetchObject();
 			if(($total->contador == 0) && ($total->documento != null)){
@@ -56,8 +55,7 @@
 			}else{
 				$dbTabla3='Pert3';
 				$dbTabla4='RUBRICA3';
-				$consulta = "SELECT COUNT($dbTabla.idTFG) as contador,$dbTabla4.documento FROM $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario INNER JOIN $dbTabla4 ON $dbTabla4.idTFG=$dbTabla3.idTFG"; 
-				$result = $db->prepare($consulta);
+				$consulta = "SELECT $dbTabla4.documento,COUNT($dbTabla3.idTFG) as contador FROM $dbTabla4 INNER JOIN $dbTabla3 ON  $dbTabla3.idTFG=$dbTabla4.idTFG WHERE $dbTabla4.idTFG=(SELECT idTFG FROM $dbTabla WHERE idAlum=(SELECT idUsuario FROM $dbTabla2 WHERE nombre=:iu))"; 				$result = $db->prepare($consulta);
 				$result->execute(array(":iu" => $nombre));
 				$total = $result->fetchObject();
 				if(($total->contador == 0) && ($total->documento != null)){

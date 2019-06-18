@@ -60,6 +60,8 @@
 			}else{
 				$contador = 1;
 			}
+		}else{
+			$contador=0;
 		}
 		return $contador;
 	}
@@ -80,6 +82,7 @@ function selectGrau(){
 		$('#select_estudiant').empty();
 		switch(selected) {
 		  case "diseny":
+		  	$('#select_estudiant').append("<option value='pregunta'>Selecciona l'estudiant</option>");
 		    diseny.forEach(function(element,index){
 				if(index%2==0){
 					$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
@@ -87,6 +90,7 @@ function selectGrau(){
 			});
 		    break;
 		  case "multi":
+		  	$('#select_estudiant').append("<option value='pregunta'>Selecciona l'estudiant</option>");
 		    multi.forEach(function(element,index){
 				if(index%2==0){
 					$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
@@ -94,13 +98,14 @@ function selectGrau(){
 			});
 		    break;
 		  case "jocs":
+		  	$('#select_estudiant').append("<option value='pregunta'>Selecciona l'estudiant</option>");
 		    jocs.forEach(function(element,index){
 				if(index%2==0){
 					$('#select_estudiant').append('<option value="'+element+'">'+element+'</option>');
 				}
 			});
 			break;
-			default:
+		   default:
 				$('#select_estudiant').append("<option value='no'>No s'ha seleccionat grau.</option>");
 			break;
 		} 
@@ -135,6 +140,9 @@ function selectEst(){
 			break;
 		}
 		$('#select_rubrica').empty();
+		if(valor>0 && valor<4){
+			$('#select_rubrica').append('<option value="pregunta">Selecciona la rúbrica</option>');
+		}
 		switch(valor){
 			case "3":
 				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
@@ -148,15 +156,22 @@ function selectEst(){
 			case "1":
 				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
 				break;
-			default:
+			case "0":
 				$('#select_rubrica').append('<option value="no">No hay rúbricas corregidas.</option>');
 				break;
-        }
-        if(valor != 0){
-            $("#submit-btn").removeAttr("disabled");
+			default:
+				$('#select_rubrica').append('<option value="pregunta">Selecciona la rúbrica</option>');
+				break;
         }
 	}
     fillRub();
 };
-
+function look(){
+    var select=$('#select_rubrica').val();
+    if((select != "pregunta") && (select != "no")){
+        $("#submit-btn").removeAttr("disabled");
+    }else{
+        $("#submit-btn").prop("disabled", "disabled");
+    }
+};
 </script>

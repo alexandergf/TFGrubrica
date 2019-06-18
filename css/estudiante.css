@@ -22,7 +22,7 @@ select{
 .formulario button {
 	min-width: 102px;
 	height: 34px;
-	background-color: #5FB9FD;
+	background-color: #0A79B8;
 	color: white;
 	padding: 0px 15px;
 	margin: 8px 0;
@@ -32,5 +32,6 @@ select{
 	font-weight: bold;
 	font-size: 14px;
     text-align: center;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
 }

@@ -48,11 +48,18 @@
 ?>
 <html>
 <head>
-	<title>Rubrica <?php echo $rub;?></title>
+	<title>Rubrica<?php echo $rub;?></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/header.css">
 	<link rel="stylesheet" href="../css/rubrica.css">
+	<link rel="stylesheet" href="../resources/fonts/fonts.css">
+	<style>
+		.parallax {
+		/* The image used */
+		background-image: url("../resources/images/rubrica<?php echo $rub; ?>.jpg");
+		}
+		</style>
 	<script type="text/javascript" src="../js/header.js"></script>
 	<script type="text/javascript" src="../js/rubrica.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -64,6 +71,7 @@
 </head>
 <body>
 	<div id="headerOUT"></div>
+	<div class="parallax"></div>
 	<div id="bodyOUT">
 		<span class="intro" id="intro">Trabajo de Fin de Grado: <?php echo $titulo." de ".$nom." " . $cognom ; ?></span>
 		<p>Documento: Memoria del TFG (solo lectura)</p>
@@ -73,7 +81,9 @@
 		 	echo "<iframe id='iframe' src='evaluar_rubrica.php?rub=".$rub."&apartado=1&perfil=$perfil&nombre=$nom'></iframe>"; 
 		 	if ($perfil == "profesor") {
 		 		echo "<iframe id='frases' src='../resources/pdf/frases.pdf'></iframe>";
-		 	}
+		 	}else{
+				echo "<iframe id='puntuacio' src='../html/notas.php?rub=".$rub."&nombre=$nom'></iframe>";
+			}
 		 ?>
 
 		<div class="return">

@@ -10,7 +10,9 @@ $resp=$_GET["perfil"];
 	<link rel="stylesheet" href="../css/header.css">
 	<link rel="stylesheet" href="../css/home.css">
 	<link rel="stylesheet" href="../css/perfil.css">
+	<link rel="stylesheet" href="../resources/fonts/fonts.css">
 	<script type="text/javascript" src="../js/header.js"></script>
+	<script type="text/javascript" src="../js/perfil.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 
     $(function(){
@@ -25,13 +27,13 @@ $resp=$_GET["perfil"];
 	</div>
 	<div class="formulario">
 		<form method="POST" action="../php/revperfil.php">
-			<select id="select_list" name="select_list">
-	          <option selected value="Selecciona el teu perfil">Selecciona el teu perfil</option>
+			<select id="select_list" name="select_list" onchange="look()">
+	          <option selected value="pregunta">Selecciona el teu perfil</option>
 	          <option value="Coordinador">Coordinador</option>
 	          <option value="Professor">Professor</option>
 	          <option value="Estudiant">Estudiant</option>
 	        </select>
-	        <input type="submit" name="submit" value="Seguir">
+	        <input type="submit" name="submit" id="submit-btn" value="Seguir" disabled>
 		</form>
 		<?php
 		if(!empty($resp)){

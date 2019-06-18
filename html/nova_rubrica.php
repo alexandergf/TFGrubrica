@@ -15,6 +15,7 @@ if($pag==1){
 	<link rel="stylesheet" href="../css/header.css">
 	<link rel="stylesheet" href="../css/home.css">
 	<link rel="stylesheet" href="../css/nova_rubrica.css">
+	<link rel="stylesheet" href="../resources/fonts/fonts.css">
 	<script type="text/javascript" src="../js/header.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script> 
@@ -47,7 +48,7 @@ if($pag==1){
 				<option selected value="Selecciona el estudiant">Selecciona l'estudiant</option>
 	        </select>
 	        <select id="select_rubrica" name="select_rubrica" onchange="look()">
-				<option selected value="Selecciona la rubrica">Selecciona la Rubrica</option>
+				<option selected value="Selecciona la rubrica">Selecciona la Rúbrica</option>
 			</select> 
 			</div> 
 	        <input type="hidden" name="perfil" value="profesor">

@@ -3,15 +3,15 @@
 	width: 100%;
 	margin-bottom: 20px;
 }
-#iframe,#frases{
+#iframe,#frases,#puntuacio{
 	height: 60%;
 	width: 49%;
 	display: inline;
 }
-#iframe{
+#iframe,#puntuacio{
 	border: 0;
 }
-#frases{
+#frases,#puntuacio{
 	float: right;
 }
 #bodyOUT,#headerOUT{
@@ -19,11 +19,12 @@
 	padding: 7px;
 	width: 65%;
 	max-width: 100%;
+	position: relative;
 }
 #btn{
 	min-width: 102px;
 	height: 34px;
-	background-color: rgb(23, 140, 230);
+	background-color: #0A79B8;
 	color: white;
 	padding: 0px 15px;
 	margin: auto;
@@ -34,8 +35,20 @@
 	font-size: 14px;
     text-align: center;
 	text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
 }
 .return{
 	margin: 20px auto;
 	display: flex;
+}
+.parallax{
+	position: relative;
+	/* Set a specific height */
+	min-height: 200px; 
+	/* Create the parallax scrolling effect */
+	background-attachment: fixed;
+	background-position: center -280;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.5;
 }

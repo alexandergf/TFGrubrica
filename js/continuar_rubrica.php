@@ -36,29 +36,31 @@
 		$dbTabla='Tiene';
 		$dbTabla2='ALUMNO';
 		$dbTabla3='Pert1';
-		$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
+		$consulta = "SELECT COUNT($dbTabla3.idTFG) as contador FROM $dbTabla3 WHERE $dbTabla3.idTFG=(SELECT idTFG FROM $dbTabla WHERE idAlum=(SELECT idUsuario FROM $dbTabla2 WHERE nombre=:iu))"; 
 		$result = $db->prepare($consulta);
 		$result->execute(array(":iu" => $nombre));
 		$total = $result->fetchColumn();
 		if($total>0 && $total<19){
+			$contador = 1;
+		}else{
 			$dbTabla3='Pert2';
-			$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
+			$consulta = "SELECT COUNT($dbTabla3.idTFG) as contador FROM $dbTabla3 WHERE $dbTabla3.idTFG=(SELECT idTFG FROM $dbTabla WHERE idAlum=(SELECT idUsuario FROM $dbTabla2 WHERE nombre=:iu))"; 
 			$result = $db->prepare($consulta);
 			$result->execute(array(":iu" => $nombre));
 			$total = $result->fetchColumn();
 			if($total>0 && $total<11){
+				$contador=2;
+			}else{
 				$dbTabla3='Pert3';
-				$consulta = "SELECT COUNT($dbTabla.idTFG) from $dbTabla INNER JOIN $dbTabla2 ON  $dbTabla.idAlum= $dbTabla2.idUsuario AND $dbTabla2.nombre=:iu INNER JOIN $dbTabla3 ON $dbTabla3.idTFG = $dbTabla2.idUsuario"; 
+				$consulta = "SELECT COUNT($dbTabla3.idTFG) as contador FROM $dbTabla3 WHERE $dbTabla3.idTFG=(SELECT idTFG FROM $dbTabla WHERE idAlum=(SELECT idUsuario FROM $dbTabla2 WHERE nombre=:iu))"; 
 				$result = $db->prepare($consulta);
 				$result->execute(array(":iu" => $nombre));
 				$total = $result->fetchColumn();
 				if($total>0 && $total<9){
 					$contador=3;
 				}else{
-					$contador=2;
+					$contador=0;
 				}
-			}else{
-				$contador = 1;
 			}
 		}
 		return $contador;
@@ -136,22 +138,24 @@ function selectEst(){
 			break;
 		}
 		$('#select_rubrica').empty();
-		$('#select_rubrica').append('<option value="pregunta">Selecciona la Rúbrica</option>');
+		if(valor>0 && valor<4 ){
+			$('#select_rubrica').append('<option value="pregunta">Selecciona la Rúbrica</option>');
+		}
 		switch(valor){
 			case "3":
-				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
-				$('#select_rubrica').append('<option value="2">Rúbrica 2</option>');
 				$('#select_rubrica').append('<option value="3">Rúbrica 3</option>');
 				break;
 			case "2":
-				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
 				$('#select_rubrica').append('<option value="2">Rúbrica 2</option>');
 				break;
 			case "1":
 				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');
 				break;
-			default:
+			case "0":
 				$('#select_rubrica').append('<option value="no">No hay rúbricas empezadas.</option>');
+				break;
+			default:
+				$('#select_rubrica').append('<option value="pregunta">Selecciona la Rúbrica</option>');
 				break;
         }
 	}

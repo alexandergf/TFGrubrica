@@ -12,7 +12,7 @@
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    color: #0080ff;
+    color: #0A79B8;
     margin-bottom: 10px; 
     font-weight: normal; 
     font-size: 14;
@@ -20,11 +20,14 @@
 #mensajes-table td{
     border: 1px solid black;
 }
+#mensajes-table #no-mesajes{
+    border: 0;
+}
 #mensajes-table #btn-id{
     border: 0;
 }
 #mensajes-table #assu{
-    width: 70%;
+    width: 69.73%;
 }
 #mensajes-table #date{
     width: 15%;
@@ -41,7 +44,7 @@
 #btn-inici{
     min-width: 102px;
 	height: 34px;
-	background-color: #5FB9FD;
+	background-color: #0A79B8;
 	color: white;
 	padding: 0px 15px;
 	margin: 10px auto;
@@ -52,10 +55,15 @@
 	font-size: 14px;
     text-align: center;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
 }
 #btn-ini{
     margin: 10px auto;
     width: 100%;
     float: left;
     display: flex;
+}
+body {
+    font-family: "Helvetica Neue Med";
+    font-weight: 700;
 }

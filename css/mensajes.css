@@ -12,7 +12,7 @@
 }
 
 p{
-    color: #5FB9FD;
+    color: #0A79B8;
     width: 10%;
 }
 #destinatario select, #asunto input[type=text]{
@@ -23,10 +23,10 @@ p{
         border-radius: 0;
         font-size: 14;
 }
-input[type=submit]{
+input[type=submit],#btn-review{
 	min-width: 102px;
 	height: 34px;
-	background-color: #5FB9FD;
+	background-color: #0A79B8;
 	color: white;
 	padding: 0px 15px;
 	margin: 10px auto;
@@ -37,6 +37,7 @@ input[type=submit]{
 	font-size: 14px;
     text-align: center;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.647058823529412);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
     float: none;
 }
 textarea{
