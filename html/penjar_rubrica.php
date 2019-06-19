@@ -34,7 +34,7 @@ $error=$_GET["error"];
 					<input type="file" id='file_input' name="file_input" />
 					<img src="../resources/logos/upload_logo.png" id='image_input' onclick="image()" />
 				</label>   
-				<div id="btns"> 	
+				<div id="btns" class="btns"> 	
 					<input type="submit" name="submit" id="submit-btn" class="submit-btn" value="Pujar" disabled="disabled" />
 					<button type="button" onclick="redirec()" id="btn-return">Tornar a l'inici</button>
 				</div>

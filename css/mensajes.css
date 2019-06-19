@@ -55,3 +55,51 @@ textarea{
     float: left;
     display: flex;
 }
+@media screen and (max-width: 768px){
+	textarea{
+        width: 95%;
+        height: 20%;
+    }
+    #mensajes-body{
+        width: 100%;
+    }
+    p{
+        width: 30%;
+    }
+    #destinatario select, #asunto input[type="text"]{
+        width: 65%;
+    }
+    #env{
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    input[type="submit"], #btn-review{
+        margin: 0;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+	textarea{
+        width: 95%;
+        height: 20%;
+    }
+    #mensajes-body{
+        width: 100%;
+    }
+    p{
+        width: 30%;
+    }
+    #destinatario select, #asunto input[type="text"]{
+        width: 65%;
+    }
+    #env{
+        width: 95%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    input[type="submit"], #btn-review{
+        margin: 0;
+    }
+}

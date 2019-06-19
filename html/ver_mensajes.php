@@ -10,7 +10,6 @@
     $total=$result->fetchColumn();
     if($total == 0){
         $aux = "no";
-        echo $total;
     }else{
         //SELECT * FROM MENSAJES INNER JOIN PROFESOR ON MENSAJES.coordinador=PROFESOR.idUsuario  AND MENSAJES.profesor= 5;
         $dbTabla='MENSAJES';

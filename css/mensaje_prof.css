@@ -53,3 +53,30 @@ textarea[disabled]{
     height: 25%;
     font-family: inherit;
 }
+@media screen and (max-width: 768px){
+	#mensajes-body {
+        width: 98%;
+    }
+    #first-line p, #second-line p, #third-line p{
+        width: 40%;
+    }
+    #first-line #word, #second-line #word, #third-line #word{
+        padding: 5px -5px 5px 5px;
+        width: 58%;
+    }
+    #btn-return {
+        width: 98%;
+    }
+    textarea[disabled]{
+        width: 98%;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    #mensajes-body {
+        width: 100%;
+        margin-left: 170px;
+    }
+    #first-line #word, #second-line #word, #third-line #word{
+        padding: 5px -5px 5px 5px;
+    }
+}

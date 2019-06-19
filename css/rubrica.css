@@ -56,3 +56,74 @@
 .intro, p{
 	font-family: inherit;
 }
+@media screen and (max-width: 768px){
+	#iframe,#frases,#puntuacio,#pdf{
+		height: 70%;
+		width: 95%;
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+	}
+	#bodyOUT{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		height: 200%;
+	}
+	.return{
+		margin: 20px 0;
+		width: 95%;
+		align-content: center;
+	}
+	.parallax{
+		position: relative;
+		min-height: 200px;
+		background-position: center -50;
+		background-attachment: inherit;
+		background-repeat: no-repeat;
+		background-size: cover;
+		opacity: 0.5;
+		background-size: 650px;
+	}
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+	#iframe,#frases,#puntuacio,#pdf{
+		height: 100%;
+		width: 95%;
+		display: flex;
+		flex-direction: column;
+		margin-top: 35px;
+	}
+	#puntuacio{
+		height: 65%;
+	}
+	#bodyOUT{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		height: 150%;
+		align-items: center;
+	}
+	.return{
+		margin: 20px 0;
+		width: 95%;
+		align-content: center;
+	}
+	.parallax{
+		position: relative;
+		min-height: 200px;
+		background-position: center -50;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;
+		opacity: 0.5;
+		background-size: 1000px;
+		margin-left: -8px;
+	}
+	#headerOUT{
+		width: 100%;
+	}
+	#btn{
+		width: 40%;
+	}
+}

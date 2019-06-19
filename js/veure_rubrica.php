@@ -120,9 +120,11 @@ function selectEst(){
 		var valor;
 		switch(gSelect) {
 		  case "diseny":
-		  		if(element == eSelect){
-					valor = diseny[index+1];
-				}
+				diseny.forEach(function(element,index){
+					if(element == eSelect){
+						valor = diseny[index+1];
+					}
+				});
 		    break;
 		  case "multi":
 		    multi.forEach(function(element,index){

@@ -44,3 +44,28 @@ input[type=submit]{
 	box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.337058823529412);
 	font-family: inherit;
 }
+@media screen and (max-width: 768px){
+	#selects{
+        flex-direction: column;
+	}
+	select{
+		width: 100%;
+	}
+	.formulario{
+		width: 90%;
+	}
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+	#selects{
+        flex-direction: column;
+	}
+	select{
+		width: 100%;
+	}
+	.formulario{
+		width: 90%;
+	}
+	input[type="submit"]{
+		width: 40%;
+	}
+}

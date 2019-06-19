@@ -9,6 +9,9 @@
 	margin: 0;
 	padding: 0;
 }
+#reverse{
+	float: right;
+}
 .redes ul {
 	display: flex;
 	flex-direction: row;
@@ -114,4 +117,57 @@ body{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+}
+@media screen and (max-width: 768px){
+	.redes{
+		float: none;
+		padding-right: 0;
+	}
+	.log_ini{
+		float: none;
+	}
+	.headerIN{
+		display: flex;
+		flex-direction: column;
+	}
+	.redes ul{
+		display: flex;
+		justify-content: space-between;
+		margin-left: -45px;
+	}
+	#form-ini{
+		top: 200px;
+		width: auto;
+	}
+	.ini_ses{
+		display: flex;
+		justify-content: end;
+	}
+	#reverse{
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	#citm_logo{
+		height: 60px;
+	}
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+	.headerIN{
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.redes ul{
+		display: flex;
+		justify-content: space-between;
+	}
+	#reverse{
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	#form-ini{
+		top: 60px;
+		width: 45%;
+		right: 45px;
+	}
 }

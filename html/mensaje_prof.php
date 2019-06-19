@@ -43,7 +43,12 @@
         </div>
         <div id="third-line">
             <p>Data:</p>
-            <?php echo "<p id='word'>".$fila->fecha."</p>";?>
+            
+            <?php 
+            $fecha=explode(" ",$fila->fecha);
+            $fecha=$fecha[0];
+            echo "<p id='word'>".$fecha."</p>";
+            ?>
         </div>
         <div id="messaje-line">
             <?php echo "<textarea id='messaje-cont' disabled>".$fila->contenido."</textarea>";?>

@@ -99,3 +99,8 @@ body {
 	width: 100%;
 	margin: 15px;
 }
+@media screen and (max-width: 768px){
+	body{
+		width: 95%;
+	}
+}
