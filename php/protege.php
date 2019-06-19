@@ -8,7 +8,7 @@ $dbTabla='USUARIO';
 	$result =$db->prepare($consulta);
 	$result->execute(array(":em" => $_SESSION["nombre"], ":iu" => $_SESSION["id"]));
 	$fila= $result->fetchObject();
-if((!isset($_SESSION["nombre"])) || ($_SESSION["nombre"]!=$fila->email) || (!isset($_SESSION["id"])) || ($_SESSION["id"]!=$fila->idUsuario)){
+if(($_SESSION["nombre"]!=$fila->email) || ($_SESSION["id"]!=$fila->idUsuario)){
 	header("location:../php/cerrar_sesion.php");
 }
 

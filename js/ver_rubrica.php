@@ -39,8 +39,10 @@ if($total == 19){
 function inici(){
 	
 		var valor = <?php echo $contador; ?>;
-        $('#select_rubrica').empty();
-        $('#select_rubrica').append('<option value="pregunta" selected="selected">Quina rúbrica dessitja veure?</option>');
+		$('#select_rubrica').empty();
+		if(valor>0 && valor<4){
+			$('#select_rubrica').append('<option value="pregunta" selected="selected">Quina rúbrica dessitja veure?</option>');
+		}
 		switch(valor){
 			case 3:
 				$('#select_rubrica').append('<option value="1">Rúbrica 1</option>');

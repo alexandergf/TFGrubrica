@@ -118,9 +118,11 @@ function selectEst(){
 		var valor;
 		switch(gSelect) {
 		  case "diseny":
-		  		if(element == eSelect){
-					valor = diseny[index+1];
-				}
+				diseny.forEach(function(element,index){
+					if(element == eSelect){
+						valor = diseny[index+1];
+					}
+				});
 		    break;
 		  case "multi":
 		    multi.forEach(function(element,index){
@@ -135,6 +137,9 @@ function selectEst(){
 					valor = jocs[index+1];
 				}
 			});
+			break;
+		  default:
+		  	$('#select_estudiant').append("<option value='pregunta'>Selecciona l'estudiant</option>");
 			break;
 		}
 		$('#select_rubrica').empty();
@@ -163,7 +168,8 @@ function selectEst(){
 };
 function look(){
     var select=$('#select_rubrica').val();
-    if((select != "pregunta") && (select != "no")){
+    var sel=$('#select_estudiant').val();
+    if((select != "pregunta") && (select != "no") && (sel != "pregunta") && (sel != "no")){
         $("#submit-btn").removeAttr("disabled");
     }else{
         $("#submit-btn").prop("disabled", "disabled");

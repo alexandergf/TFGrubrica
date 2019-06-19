@@ -176,8 +176,9 @@ function selectEst(){
 	fillRub();
 };
 function look(){
-    var select=$('#select_rubrica').val();
-    if((select != "pregunta") && (select != "no")){
+	var select=$('#select_rubrica').val();
+	var sel=$('#select_estudiant').val();
+    if((select != "pregunta") && (select != "no") && (sel != "pregunta") && (sel != "no")){
         $("#submit-btn").removeAttr("disabled");
     }else{
         $("#submit-btn").prop("disabled", "disabled");
